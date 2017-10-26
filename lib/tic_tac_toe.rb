@@ -57,3 +57,35 @@ def current_player(board)
   end
 end
 
+def won?(board)
+  WIN_COMBINATIONS.each do |combo|
+    if position_taken?(board,combo[0]) && position_taken?(board,combo[1]) && position_taken?(board,combo[2])
+      if board[combo[0]] == board[combo[1]]  && board[combo[1]] == board[combo[2]]
+        return combo
+      end
+    end
+  end
+  false
+end
+
+def full?(board)
+  !board.include? " "
+end
+
+def draw?(board)
+  if(!won?(board))
+    if(full?(board))
+      true
+    end
+  else
+    false
+  end
+end
+
+def over?(board)
+  if(won?(board) || full?(board))
+    true
+  else
+    false
+  end
+end
