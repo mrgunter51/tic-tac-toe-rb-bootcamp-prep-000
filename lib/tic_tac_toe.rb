@@ -98,3 +98,12 @@ def winner(board)
     board[win_combo[0]]
   end
 end
+
+def play(board)
+  until(over?(board))
+    turn(board)
+  end
+
+  if(won?(board))
+    puts "Congratulations #{winner(board)}!"
+end
